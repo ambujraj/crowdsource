@@ -3,11 +3,8 @@ from django.shortcuts import render
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
-    if request.user.is_authenticated:
-        return render(request, "home.html", {})
-    else:
-        return render(request, "home_other.html", {})
-
+    return render(request, "home.html", {})
+    #check for auth to refer to login
 def login_view(request, *args, **kwargs):
     return render(request, "login.html", {})
 
