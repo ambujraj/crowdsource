@@ -2,6 +2,499 @@
 
 {% block content %}
 
-{<h1>{{request.user}}</h1>}
+<style>
+    body {
+        font-family: 'Varela Round', sans-serif;
+    }
+    .form-control {
+        box-shadow: none;		
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .navbar {
+        background: #fff;
+        padding-left: 16px;
+        padding-right: 16px;
+        border-bottom: 1px solid #dfe3e8;
+        border-radius: 0;
+    }
+    .nav-link img {
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        margin: -8px 0;
+        float: left;
+        margin-right: 10px;
+    }
+    .navbar .navbar-brand {
+        padding-left: 0;
+        font-size: 20px;
+        padding-right: 50px;
+    }
+    .navbar .navbar-brand b {
+        color: #33cabb;		
+    }
+    .navbar .form-inline {
+        display: inline-block;
+    }
+    .navbar a {
+        color: #888;
+        font-size: 15px;
+    }
+    .search-box {
+        position: relative;
+    }	
+    .search-box input {
+        padding-right: 35px;
+        border-color: #dfe3e8;
+        border-radius: 4px !important;
+        box-shadow: none
+    }
+    .search-box .input-group-text {
+        min-width: 35px;
+        border: none;
+        background: transparent;
+        position: absolute;
+        right: 0;
+        z-index: 9;
+        padding: 7px;
+        height: 100%;
+    }
+    .search-box i {
+        color: #a0a5b1;
+        font-size: 19px;
+    }
+    .navbar .sign-up-btn {
+        min-width: 110px;
+        max-height: 36px;
+    }
+    .navbar .dropdown-menu {
+        color: #999;
+        font-weight: normal;
+        border-radius: 1px;
+        border-color: #e5e5e5;
+        box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    }
+    .navbar a, .navbar a:active {
+        color: #888;
+        padding: 8px 20px;
+        background: transparent;
+        line-height: normal;
+    }
+    .navbar .navbar-form {
+        border: none;
+    }
+    .navbar .action-form {
+        width: 280px;
+        padding: 20px;
+        left: auto;
+        right: 0;
+        font-size: 14px;
+    }
+    .navbar .action-form a {		
+        color: #33cabb;
+        padding: 0 !important;
+        font-size: 14px;
+    }
+    .navbar .action-form .hint-text {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 13px;
+    }
+    .navbar .btn-primary, .navbar .btn-primary:active {
+        color: #fff;
+        background: #33cabb !important;
+        border: none;
+    }	
+    .navbar .btn-primary:hover, .navbar .btn-primary:focus {		
+        color: #fff;
+        background: #31bfb1 !important;
+    }
+    .navbar .social-btn .btn, .navbar .social-btn .btn:hover {
+        color: #fff;
+        margin: 0;
+        padding: 0 !important;
+        font-size: 13px;
+        border: none;
+        transition: all 0.4s;
+        text-align: center;
+        line-height: 34px;
+        width: 47%;
+        text-decoration: none;
+    }
+    .navbar .social-btn .facebook-btn {
+        background: #507cc0;
+    }
+    .navbar .social-btn .facebook-btn:hover {
+        background: #4676bd;
+    }
+    .navbar .social-btn .twitter-btn {
+        background: #64ccf1;
+    }
+    .navbar .social-btn .twitter-btn:hover {
+        background: #4ec7ef;
+    }
+    .navbar .social-btn .btn i {
+        margin-right: 5px;
+        font-size: 16px;
+        position: relative;
+        top: 2px;
+    }
+    .or-seperator {
+        margin-top: 32px;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+    }
+    .or-seperator b {
+        color: #666;
+        padding: 0 8px;
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+        text-align: center;
+        line-height: 26px;
+        background: #fff;
+        display: inline-block;
+        border: 1px solid #e0e0e0;
+        border-radius: 50%;
+        position: relative;
+        top: -15px;
+        z-index: 1;
+    }
+    .navbar .action-buttons .dropdown-toggle::after {
+        display: none;
+    }
+    .form-check-label input {
+        position: relative;
+        top: 1px;
+    }
+    @media (min-width: 1200px){
+        .form-inline .input-group {
+            width: 300px;
+            margin-left: 30px;
+        }
+    }
+    @media (max-width: 768px){
+        .navbar .dropdown-menu.action-form {
+            width: 100%;
+            padding: 10px 15px;
+            background: transparent;
+            border: none;
+        }
+        .navbar .form-inline {
+            display: block;
+        }
+        .navbar .input-group {
+            width: 100%;
+        }
+    }
 
+
+
+
+    /* $base-background: #00CC99; */
+body {
+  background: #D18B49;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 1.6em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.btn {
+  border-radius: 2px;
+  padding: 8px 12px;
+  color: #D18B49;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.card {
+  background: #FFFFFF;
+  max-width: 400px;
+  margin: 100px auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-sizing: border-box;
+  padding: 48px;
+  text-align: center;
+}
+
+.products {
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.product {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.product.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.thumbnail {
+  margin: 0 0 48px;
+}
+
+.title {
+  margin: 0 0 12px;
+  color: #D18B49;
+  font-size: 24px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.description {
+  margin: 0 0 48px;
+}
+
+.footer {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  margin: 0 -12px -12px;
+}
+
+[ripple] {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+[ripple] .ripple {
+  position: absolute;
+  background: #FFFFFF;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-animation: ripple 2s;
+          animation: ripple 2s;
+}
+
+@-webkit-keyframes ripple {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0.2;
+  }
+  100% {
+    -webkit-transform: scale(20);
+            transform: scale(20);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0.2;
+  }
+  100% {
+    -webkit-transform: scale(20);
+            transform: scale(20);
+    opacity: 0;
+  }
+}
+    </style>
+    <script>
+    // Prevent dropdown menu from closing when click inside the form
+    $(document).on("click", ".action-buttons .dropdown-menu", function(e){
+        e.stopPropagation();
+    });
+    </script>
+    </head> 
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="#" class="navbar-brand">Crowd<b>Source</b></a>  		
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+            
+            <div class="navbar-nav ml-auto action-buttons">
+                <div class="nav-item dropdown">
+                    <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
+                    <div class="dropdown-menu action-form">
+                        <form action="/examples/actions/confirmation.php" method="post">
+                            
+                            
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" required="required">
+                            </div>
+                            <input type="submit" class="btn btn-primary btn-block" value="Login">
+                            
+                        </form>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle sign-up-btn">Sign up</a>
+                    <div class="dropdown-menu action-form">
+                        <form action="/examples/actions/confirmation.php" method="post">
+                            <p class="hint-text">Fill in this form to create your account!</p>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
+                            </div>
+                            <input type="submit" class="btn btn-primary btn-block" value="Sign up">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="card">
+        <div class="products">
+          <div class="product active" product-id="1" product-color="#D18B49">
+            <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/Stag.svg"/></div>
+            <h1 class="title">The Magnificent Stag</h1>
+            <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          </div>
+          <div class="product" product-id="2" product-color="#542F13">
+            <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/Bear.svg"/></div>
+            <h1 class="title">The Courageous Bear</h1>
+            <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          </div>
+          <div class="product" product-id="3" product-color="#A5AAAE">
+            <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/Mouse.svg"/></div>
+            <h1 class="title">The Sneaky Mouse</h1>
+            <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          </div>
+          <div class="product" product-id="4" product-color="#ED8D1F">
+            <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/Fox.svg"/></div>
+            <h1 class="title">The Cunning Fox</h1>
+            <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          </div>
+          <div class="product" product-id="5" product-color="#C4C8CB">
+            <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/Rabbit.svg"/></div>
+            <h1 class="title">The Jumpy Rabbit</h1>
+            <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          </div>
+        </div>
+        <div class="footer"><a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">Prev</a><a class="btn" id="next" href="#" ripple="" ripple-color="#666666">Next</a></div>
+      </div>
+
+      <script>
+          $(document).ready(function() {
+  var getProductHeight = $('.product.active').height();
+
+  $('.products').css({
+    height: getProductHeight
+  });
+
+  function calcProductHeight() {
+    getProductHeight = $('.product.active').height();
+
+    $('.products').css({
+      height: getProductHeight
+    });
+  }
+
+  function animateContentColor() {
+    var getProductColor = $('.product.active').attr('product-color');
+
+    $('body').css({
+      background: getProductColor
+    });
+
+    $('.title').css({
+      color: getProductColor
+    });
+
+    $('.btn').css({
+      color: getProductColor
+    });
+  }
+
+  var productItem = $('.product'),
+    productCurrentItem = productItem.filter('.active');
+
+  $('#next').on('click', function(e) {
+    e.preventDefault();
+
+    var nextItem = productCurrentItem.next();
+
+    productCurrentItem.removeClass('active');
+
+    if (nextItem.length) {
+
+      productCurrentItem = nextItem.addClass('active');
+    } else {
+      productCurrentItem = productItem.first().addClass('active');
+    }
+
+    calcProductHeight();
+    animateContentColor();
+  });
+
+  $('#prev').on('click', function(e) {
+    e.preventDefault();
+
+    var prevItem = productCurrentItem.prev();
+
+    productCurrentItem.removeClass('active');
+
+    if (prevItem.length) {
+      productCurrentItem = prevItem.addClass('active');
+    } else {
+      productCurrentItem = productItem.last().addClass('active');
+    }
+
+    calcProductHeight();
+    animateContentColor();
+  });
+
+  // Ripple
+  $('[ripple]').on('click', function(e) {
+    var rippleDiv = $('<div class="ripple" />'),
+      rippleSize = 60,
+      rippleOffset = $(this).offset(),
+      rippleY = e.pageY - rippleOffset.top,
+      rippleX = e.pageX - rippleOffset.left,
+      ripple = $('.ripple');
+
+    rippleDiv.css({
+      top: rippleY - (rippleSize / 2),
+      left: rippleX - (rippleSize / 2),
+      background: $(this).attr("ripple-color")
+    }).appendTo($(this));
+
+    window.setTimeout(function() {
+      rippleDiv.remove();
+    }, 1900);
+  });
+});
+      </script>
 {% endblock %}
