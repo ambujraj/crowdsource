@@ -24,7 +24,7 @@ SECRET_KEY = 'a@4*_^oxj=$)vz_eg0#@#$m6uuxv)_k9r!sm=pst9d4_0pm_-2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['crowdsource-ambuj.herokuapp.com/', 'localhost']
 
 
 # Application definition
