@@ -1,1 +1,1 @@
-web: gunicorn crowdsource.wsgi --log-file -e
+web: gunicorn crowdsource.wsgi
